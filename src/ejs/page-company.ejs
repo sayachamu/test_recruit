@@ -1,0 +1,251 @@
+<%
+  const ROOT_EJS=`${process.cwd()}/src/ejs`;
+  const contentInfo = {
+    subTitle: '会社を知る',
+    mainTitle: '../assets/images/company/title_company.svg',
+    pos: 'left'
+  };
+
+  const serviceInfo = {
+    subTitle: '事業紹介',
+    mainTitle: '../assets/images/company/title_service.svg',
+    pos: 'center'
+  };
+
+  const missionInfo = {
+    subTitle: 'ミッション',
+    mainTitle: '../assets/images/company/title_mission.svg',
+    pos: 'left'
+  };
+
+  const visionInfo = {
+    subTitle: 'ビジョン',
+    mainTitle: '../assets/images/company/title_vision.svg',
+    pos: 'left'
+  };
+
+  const credoInfo = {
+    subTitle: '行動指針',
+    mainTitle: '../assets/images/company/title_credo.svg',
+    pos: 'center'
+  };
+
+  const outlineInfo = {
+    subTitle: '会社概要',
+    mainTitle: '../assets/images/company/title_outline.svg',
+    pos: 'left'
+  };
+
+  const accessInfo = {
+    subTitle: 'アクセス',
+    mainTitle: '../assets/images/company/title_access.svg',
+    pos: 'left'
+  };
+
+  const cards = [
+    {
+      type: "mission",
+      titles: ["地域の皆様の明日(ミライ)を", "元気にする"],
+      texts: [
+        "「地域の皆様の明日(ミライ)を元気にする」を理念とし、様々な分野のサービスを通して生活の充実とその先にある社会貢献を叶えていきます。これまで、飲食事業においては安心・安全で美味しい料理とリロードエッジらしいサービスで地域の皆様に”楽しい”時間を提供してきました。", 
+        "また、「医療クリニック事業」では美容と健康の向上を通して”理想の自分に近づく”支援をするサービスを展開してきました。そして今後は、不動産事業やコンサルティング事業など新たな事業もスタート。これからも「地域の皆様の明日(ミライ)を元気にする」というミッションを中心に持ち、新たなチャレンジを続けていきます。\n"
+      ],
+      pcSrc: "../assets/images/company/company_img_1_pc.jpg",
+      spSrc: "../assets/images/company/company_img_1_sp.jpg"
+    },
+    {
+      type: "vision",
+      titles: ["時代のニーズに合わせて", "柔軟に変化・成長していける企業へ	"],
+      texts: [
+        "私たちは、これまでの常識に囚われない。\n私たちは、求められないものは提供しない。\n私たちは、変化を拒むことはしない。私たちは、これまでの常識に囚われない。\n私たちは、求められないものは提供しない。\私たちは、変化を拒むことはしない。\n", 
+        "リロードエッジは新たな常識を創り出す先駆者として、\n時代のニーズに合わせて柔軟に変化・成長していける会社を\n目指します。\nその先に、「地域の皆様の明日(ミライ)を元気にする」を実現していきます。"
+      ],
+      pcSrc: "../assets/images/company/company_img_2_pc.jpg",
+      spSrc: "../assets/images/company/company_img_2_sp.jpg"
+    }
+  ];
+
+  const credo = [
+    "お客様 仲間 家族に誠実であろう",
+    "プロ意識を持って行動しよう",
+    "やらずにできないと言うな、やって学ぼう",
+    "明確な目標を持とう",
+    "お客様 仲間 家族に感謝を伝える習慣を持とう"
+  ];
+%>
+
+
+<%- include('common/_head', {metaTitle: 'companyページ' }) %>
+<body>
+  <%- include('common/_header') %>
+  <div class="page">
+    <!-- top -->
+    <div class="contents">
+      <div class="contents__inner">
+        <%- include(`${ROOT_EJS}/module/title/_contents`, { contentInfo }) %>
+        <div class="contents__headline-img contents__headline-img--pc">
+          <img src="../assets/images/company/company_bg_1_pc.jpg" alt="COMPANY">
+        </div>
+        <div class="contents__headline-img contents__headline-img--sp">
+          <img src="../assets/images/company/company_bg_1_sp.jpg" alt="COMPANY">
+        </div>
+      </div>
+    </div>
+    <!-- service -->
+    <div class="contents contents--service">
+      <div class="contents__inner">
+        <%- include(`${ROOT_EJS}/module/title/_contents`, { contentInfo: serviceInfo }) %>
+        <div class="contents__servie-description">
+          「地域の皆様の明日(ミライ)を元気にする」<br class="is-pc">
+          を実現する多角的な展開
+        </div>
+        <div class="contents__servie-text">
+          私たちは、地域の皆様の明日(ミライ)を<br class="is-sp">元気にするべく、<br class="is-pc">
+          飲食、医療、美容、不動産など<br class="is-sp">様々な事業を展開。<br />
+          そして、これからも既存の事業の枠に囚われず<br class="is-sp">新たな事業を創造し続けます。<br />
+          そして一つずつ着実に世の中にいいものを<br class="is-sp">提供し続け、明日への活力を届けていきます。
+        </div>
+      </div>
+    </div>
+    <!-- mission -->
+    <div class="contents">
+      <div class="contents__inner">
+        <% cards.forEach((card) => { %>
+          <div class="contents__mission-wrap">
+            <div class="contents__missio-cCard-inner">
+              <div class="contents__mission-card">
+                <% if (card.type == "mission") { %>
+                  <%- include(`${ROOT_EJS}/module/title/_contents`, { contentInfo: missionInfo }) %>
+                <% } else { %>
+                  <%- include(`${ROOT_EJS}/module/title/_contents`, { contentInfo: visionInfo }) %>
+                <% } %>
+              </div>
+              <div class="contents__mission-item">
+                <div class="contents__mission-left">
+                  <% card.titles.forEach((title) => { %>
+                    <div class="contents__mission-title">
+                      <%= title %>
+                    </div>
+                  <% }) %>
+                  <% card.texts.forEach((text) => { %>
+                    <div class="contents__mission-text">
+                      <%= text %>
+                    </div>
+                  <% }) %>
+                </div>
+                <div class="contents__mission-right--pc">
+                  <img src="<%= card.pcSrc %>" alt="<%= card.tupe %>">
+                </div>
+              <div class="contents__mission-right--sp">
+                <img src="<%= card.spSrc %>" alt="<%= card.tupe %>">
+              </div>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+    <!-- credo -->
+    <div class="contents">
+      <div class="contents__inner">
+        <%- include(`${ROOT_EJS}/module/title/_contents`, { contentInfo: credoInfo }) %>
+        <div class="contents__credo-title">行動指針とは、ミッションの実現に向けてリロードエッジで仕事をする全社員が共通して持ってほしい意識や行動である。</div>
+        <div class="contents__credo-wrap">
+          <% credo.forEach((item, i) => { %>
+            <div class="contents__credo-item">
+              <p class="contents__credo-item-num"><%= i+1 %></p>
+              <p class="contents__credo-item-text">
+                <%= item %>
+              </p>
+            </div>
+          <% }) %>
+      </div>
+    </div>
+  </div>
+  <!-- outline -->
+  <div class="contents">
+    <div class="contents__inner">
+      <div class="contents__bg--pc">
+        <img src="../assets/images/company/company_bg_2_pc.jpg" alt="company">
+      </div>
+      <div class="contents__bg--sp">
+        <img src="../assets/images/company/company_bg_2_sp.jpg" alt="company">
+      </div>
+      <%- include(`${ROOT_EJS}/module/title/_contents`, { contentInfo: outlineInfo }) %>
+      <div class="contents__outline">
+        <div class="summary-list summary-list--outline">
+          <div clas="summary-list__item">
+            <div class="summary-list__head">商号</div>
+            <div class="summary-list__body">株式会社リロードエッジ</div>
+          </div>
+          <div clas="summary-list__item">
+            <div class="summary-list__head">代表</div>
+            <div class="summary-list__body">代表取締役　高取 健治</div>
+          </div>
+          <div clas="summary-list__item">
+            <div class="summary-list__head">事業内容</div>
+            <div class="summary-list__body">飲食事業(カフェ・レストラン・居酒屋経営およびEC・デリバリー運営) / 医療事業(医療クリニック経営 / 医療機器販売貸与 / 健康食品製造販売 /
+            化粧品製造販売) / 美容事業(エステ・ネイルサロン・サロン経営) /<br class="is-pc">
+            FC(フランチャイズ)店舗事業 / 再生エネルギー事業 /一般不動産の売買および仲介斡旋 / リフォーム事業 / 経営コンサルタント事業</div>
+          </div>
+        </div>
+        <div clas="summary-list__item">
+          <div class="summary-list__head">資本金</div>
+          <div class="summary-list__body">3,000,000円</div>
+        </div>
+        <div clas="summary-list__item">
+          <div class="summary-list__head">従業員数</div>
+          <div class="summary-list__body">328人(パート・アルバイト含む)</div>
+        </div>
+        <div clas="summary-list__item">
+          <div class="summary-list__head">設立</div>
+          <div class="summary-list__body">2000年2月15日</div>
+        </div>
+        <div clas="summary-list__item">
+          <div class="summary-list__head">所在地</div>
+          <div class="summary-list__body">〒162-0826<br class="is-pc">
+          東京都新宿区市谷船河原町9-1<br class="is-pc">
+          NBCアネックス市谷ビル8F</div>
+        </div>
+        <div clas="summary-list__item">
+          <div class="summary-list__head">店舗事業</div>
+          <div class="summary-list__body">市ヶ谷・池袋・田町・恵比寿・渋谷・八丁堀・高田馬場・上野・中野・武蔵小杉・南越谷・吉祥寺・日の出・川口・府中・五反田・上野・大手町・品川・柏・船橋・松戸・錦糸町</div>
+        </div>
+        <div clas="summary-list__item">
+          <div class="summary-list__head">TEL</div>
+          <div class="summary-list__body">03-5946-8061</div>
+        </div>
+        <div clas="summary-list__item">
+          <div class="summary-list__head">FAX</div>
+          <div class="summary-list__body">03-5946-8062</div>
+        </div>
+        <div clas="summary-list__item">
+          <div class="summary-list__head">取引銀行</div>
+          <div class="summary-list__body">三菱UFJ銀行、りそな銀行、きらぼし銀行</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- access -->
+  <div class="contents">
+    <div class="contents__inner">
+      <%- include(`${ROOT_EJS}/module/title/_contents`, { contentInfo: accessInfo }) %>
+      <div class="contents__access">
+        <div class="contents__access-location">
+        <div class="contents__access-head">本社</div>
+        <div class="contents__access-body">
+          <p class="contents__access-address">
+            〒162-0826<br class="is-pc">
+            東京都新宿区市谷船河原町9-1 NBCアネックス市谷ビル5F
+          </p>
+          <p class="contents__access-station">飯田橋駅から徒歩6分 / 市ヶ谷駅から徒歩7分 / 牛込神楽坂駅から徒歩7分 / 神楽坂駅から徒歩11分</p>
+        </div>
+        </div>
+        <div class="contents__access-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.1000000000004!2d139.70"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include('common/_footer') %>
+</body>

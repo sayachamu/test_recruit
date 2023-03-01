@@ -1,0 +1,82 @@
+<% 
+  const ROOT_EJS=`${process.cwd()}/src/ejs`;
+
+  const contentInfo = {
+    subTitle: '採用情報',
+    mainTitle: '../assets/images/recruit/title_recruit.svg',
+    pos: 'left'
+  };
+
+  const statueInfo = {
+    title: '求める人物像',
+    boxContents: [
+      {
+        label: '挑戦心',
+        text: '自分の可能性を広げるために\n新たな一歩を踏み出し、\nやり切れる人'
+      },
+      {
+        label: '逆算力',
+        text: 'ゴールから逆算して\n計画を立てられる人'
+      },
+      {
+        label: '相手目線',
+        text: '相手の気持ちを想像し、\n相手目線に立てる人'
+      },
+      {
+        label: '夢中力',
+        text: '好きなことに対して興味をもち、\n常に考えている人'
+      },
+      {
+        label: '発信力',
+        text: '役職や年齢関係なく、\n目標のために相手を動かせる人'
+      }
+    ]
+  }
+%>
+
+
+<%- include('common/_head', {metaTitle: 'recruitページ' }) %>
+
+<body>
+  <%- include('common/_header') %>
+  <div class="page">
+    <!-- top -->
+    <%- include(`${ROOT_EJS}/module/title/_contents`, { contentInfo }) %>
+    <div class="contents__headline-img contents__headline-img--recruit contents__headline-img--pc">
+      <img src="../assets/images/recruit/bg_pc.png" alt="RECRUIT">
+    </div>
+    <div class="contents__headline-img contents__headline-img--recruit contents__headline-img--sp">
+      <img src="../assets/images/recruit/bg_sp.png" alt="RECRUIT">
+    </div>
+    <div class="contents contents--recruit">
+      <div class="contents__inner">
+        <!-- stature -->
+        <div class="contents__stature">
+          <%- include(`${ROOT_EJS}/component/recruit/_statue`, { statueInfo }) %>
+        </div>
+        <!-- jobDetail -->
+        <div class="contents__job-detail">
+          <div class="contents__tab">
+            <ul class="contents__tab-list">
+              <li class="contents__tab-item contents__tab-item--left">
+                <a class="contents__tab-link">会社説明会詳細</a>
+              </li>
+              <li class="contents__tab-item contents__tab-item--right">
+                <a class="contents__tab-link">社員募集要項</a>
+              </li>
+            </ul>
+          </div>
+          <div class="contents__tab-contents">
+            <div class="contents__company-detail">
+              <%- include(`${ROOT_EJS}/component/recruit/_companyDetail`) %>
+            </div>
+            <div class="contents__job-description">
+              <%- include(`${ROOT_EJS}/component/recruit/_jobDescription`) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include('common/_footer') %>
+</body>

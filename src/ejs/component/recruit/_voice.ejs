@@ -1,0 +1,47 @@
+<% 
+  const ROOT_EJS=`${process.cwd()}/src/ejs`
+  const lineTitle = [{
+    main: "VOICE",
+    sub: "参加者の声"
+  }];
+
+  const voiceInfos = [
+    {
+      voice: "とても簡潔にわかりやすかったです。最初のアイスブレイクで緊張がとけ、聞きたいことをしっかり聞くことができました。また、学びたかったこともしっかりと学べ、それをグループワークで話し合うことができ、今後の就活にも活きる充実した時間となりました",
+      img: "../assets/images/recruit/person_1.svg",
+      alt: "voice_1"
+    },
+    {
+      voice: "エッジの効いた説明をしていただき心が躍りました！初めての説明会だったのですが、とてもインパクトがあり楽しそうであると感じました。また、社風などをみて一緒に働いてみたいと強く感じました。チームで何か一つに取り組むことに楽しさを感じるため、今後のプログラムで実際の仕事も体験してみたいです。",
+      img: "../assets/images/recruit/person_2.svg",
+      alt: "voice_2"
+    },
+    {
+      voice: "分かりやすい説明に加え、社風の説明の通りの明るさで堅苦しくない雰囲気で参加することができたため、非常に充実した時間になりました。また、一貫して一緒に働く仲間の仕事も人生も含めて、社員を大切にしていることを実感。はじめて知った会社でしたが、参加してみてとても素敵だと感じました。",
+      img: "../assets/images/recruit/person_3.svg",
+      alt: "voice_3"
+    }
+  ]
+%>
+
+<div class="voice">
+  <div class="voice__inner">
+    <%- include(`${ROOT_EJS}/module/title/_line`, { lineTitle }) %>
+    <div class="voices">
+      <% voiceInfos.forEach(voiceInfo => { %>
+        <div class="voice__item">
+          <div class="voice__img">
+            <img src="<%= voiceInfo.img %>" alt="<%= voiceInfo.alt %>">
+          </div>
+          <div class="voice__text">
+            <%= voiceInfo.voice %>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+  <div class="voice__footer">
+    エッジの効いた一歩目を歩むかどうかは、<br class="is-sp">キミ次第。<br />
+    皆さんとお会いできることを<br class="is-sp">楽しみにしています。
+  </div>
+</div>

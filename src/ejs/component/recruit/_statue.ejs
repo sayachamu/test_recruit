@@ -1,0 +1,19 @@
+
+  <div class="box-content box-content--steps">
+    <span class="box-content__title">
+      <%= statueInfo.title %>
+    </span>
+    <ul class="box-content__items">
+      <% statueInfo.boxContents.forEach((boxContent, i) => { %>
+        <li class="box-content__item">
+          <div class="box-content__left">
+            <span class="box-content__num box-content__num--<%= i+1 %>"><img src="../assets/images/common/<%= i+1 %>.svg" alt="<%= i+1 %>"></span>
+            <span class="box-content__label"><%= boxContent.label %></span>
+          </div>
+          <div class="box-content__right">
+            <%= boxContent.text %>
+          </div>
+        </li>
+      <% }) %>
+    </ul>
+  </div>

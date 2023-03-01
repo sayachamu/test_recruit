@@ -1,0 +1,9 @@
+@use "sass:math";
+
+@function sp($size) {
+  @return calc($size * calc(#{var(--window-width-sp)} / 750));
+}
+
+@function lieHeight($font, $space) {
+  @return calc($space / $font);
+}

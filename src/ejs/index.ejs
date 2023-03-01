@@ -1,0 +1,43 @@
+<%- include('common/_head', {metaTitle: 'indexページ'}) %>
+<% const pages = [
+  {
+    title: "TOPページ",
+    path: 'page-top'
+  },
+  {
+    title: "messageページ",
+    path: 'page-message'
+  },
+  {
+    title: "companyページ",
+    path: 'page-company'
+  },
+  {
+    title: 'JOBページ',
+    path: 'page-job'
+  },
+  {
+    title: 'MEMBERページ',
+    path: 'page-member'
+  },
+  {
+    title: 'CULTUREページ',
+    path: 'page-culture'
+  },
+  {
+    title: 'RECRUITページ',
+    path: 'page-recruit'
+  }
+] %>
+
+<%- include('common/_header') %>
+<div>
+  <h1>ページ一覧リスト</h1>
+  <ul>
+    <% pages.forEach(page => { %>
+      <li>
+        <a href="/<%= page.path %>.html" target="_blank"><%= page.title %></a>
+      </li>
+    <% }) %>
+</div>
+<%- include('common/_footer') %>

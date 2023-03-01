@@ -1,0 +1,223 @@
+@use 'module/colors';
+@use 'module/common';
+@use 'module/reset';
+@use 'module/mixin' as *;
+@use 'module/functions' as *;
+@use 'sass:math';
+
+.footer {
+  position: relative;
+  width: 100%;
+  background: colors.$blue;
+  overflow: hidden;
+  
+  &__wrapper {
+    width: 100%;
+    background: colors.$blue-dark-deep;
+    transform: skewY(-1 * common.$slant-angle);
+    transform-origin: right top;
+    padding-bottom: 100vw * math.sin(common.$slant-angle);
+  }
+
+  &__content {
+    transform: skewY(common.$slant-angle);
+    transform-origin: left top;
+    color: colors.$white;
+  }
+
+  &__entry {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 85px;
+    padding-bottom: 60px;
+    @include mq(sp) {
+
+    padding-top: sp(90px);
+    padding-bottom: sp(182px);
+    }
+  }
+
+  .entry {
+    &__catchcopy--pc {
+      width: 602px;
+      height: 130px;
+      margin-bottom: 67px;
+      @include mq(sp) {
+        display: none;
+      }
+    }
+
+    &__catchcopy--sp {
+      width: sp(542px);
+      height: sp(130.5px);
+      margin-bottom: sp(83px);
+      @include mq(pc) {
+        display: none;
+      }
+    }
+
+    &__button {
+      width: 800px;
+      height: 130px;
+      background-color: colors.$blue;
+      color: colors.$white;
+      font-size: 5.7rem;
+      @include mq(sp) {
+        width: sp(630px);
+        height: sp(202px);
+        font-size: sp(5.7rem);
+      }
+    }
+  }
+
+  &__separator {
+    width: 100%;
+    height: 2px;
+    background-color: colors.$blue;
+    transform: skewY(-1 * common.$slant-angle);
+    transform-origin: right;
+  }
+
+  &__info {
+    max-width: 1040px;
+    margin: 120px auto 77px;
+    padding: 0 100px;
+    @include mq(sp) {
+      margin: sp(118px) auto sp(36px);
+      padding: 0 0 0 sp(36px);
+    }
+  }
+
+  .info {
+    &__brand {
+      @include mq(pc) {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+      }
+      @include mq(sp) {
+        margin-bottom: sp(50px);
+      }
+    }
+
+    &__logo {
+      &--pc {
+        width: 285px;
+        height: 30px;
+        @include mq(sp) {
+          display: none;
+        }
+      }
+      &--sp {
+        width: sp(312px);
+        height: sp(113px);
+        margin-bottom: sp(75px);
+        @include mq(pc) {
+          display: none;
+        }
+      }
+    }
+
+    &__sns {
+      display: flex;
+      align-items: center;
+      align-self: flex-start;
+
+      .sns {
+        &__link {
+          &:not(:last-child) {
+            margin-right: 30px;
+          }
+        }
+
+        &__icon--tiktok {
+          width: 29px;
+          height: 33.25px;
+          @include mq(sp) {
+            width: sp(46px);
+            height: sp(52.75px);
+          }
+        }
+
+        &__icon--instagram {
+          width: 32px;
+          height: 32px;
+          @include mq(sp) {
+            width: sp(54px);
+            height: sp(54px);
+          }
+        }
+      }
+    }
+
+    &__address {
+      font-size: 1.4rem;
+      letter-spacing: 2;
+      margin-bottom: 30px;
+      display: flex;
+      @include mq(sp) {
+        font-size: sp(2.2rem);
+        margin-bottom: sp(3rem);
+        line-height: 1.75;
+      }
+
+      .address {
+        &__label {
+          margin-right: 10px;
+          @include mq(sp) {
+            margin-right: sp(14px);
+          }
+        }
+        &__value {
+          @include mq(pc) {
+            & br {
+              display: none 
+            }
+          }
+        }
+      }
+    }
+
+    &__links {
+      display: flex;
+      margin-bottom: 34px;
+      @include mq(pc) {
+        margin-left: -12px;
+      }
+      @include mq(sp) {
+        margin-bottom: sp(56px);
+      }
+    }
+
+    &__link {
+      font-size: 1.6rem; 
+      margin-bottom: 8px;
+      border-bottom: 2px solid colors.$white;
+      &:not(:last-child) {
+        margin-right: 35px;
+      }
+      @include mq(sp) {
+        font-size: sp(2.2rem); 
+        &:not(:last-child) {
+          margin-right: sp(50px);
+        } 
+      }
+
+      .link {
+        &__icon {
+          width: 19px;
+          height: 12px;
+        } 
+      }
+    }
+
+    &__copyright {
+      font-size: 1rem;
+      @include mq(sp) {
+        font-size: sp(1.8rem);
+      }
+    }
+  }
+}
+ 

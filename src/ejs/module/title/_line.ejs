@@ -1,0 +1,12 @@
+<% lineTitle.forEach(line=> { %>
+<div class="lineTitle">
+  <p class="lineTitle__title">
+    <%= line.main %>
+  </p>
+  <% if (line.sub) { %>
+    <p class="lineTitle__subTitle">
+      <%= line.sub %>
+    </p>
+   <% } %>
+</div>
+<% }) %>

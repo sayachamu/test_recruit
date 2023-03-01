@@ -1,0 +1,176 @@
+<%
+  const ROOT_EJS=`${process.cwd()}/src/ejs`;
+  const contentInfo = {
+    subTitle: 'メッセージ',
+    mainTitle: '../assets//images/message/title_message.svg',
+    pos: 'left'
+  }
+
+  const messageTopInfo = {
+    subTitle: '代表メッセージ',
+    mainTitle: '../assets//images/message/title-message-top.svg',
+    pos: 'left',
+    size: 'smaller'
+  }
+
+  const messageHrInfo = {
+    subTitle: '人事メッセージ',
+    mainTitle: '../assets//images/message/title-message-hr.svg',
+    pos: 'left',
+    size: 'smaller'
+  }
+
+  const topName = ["代表取締役", "高取 健治"];
+  const hrName = ["人事/新卒採用担当", "小堀 広恵"];
+
+  const topMessagesHighlight = ["仕事も趣味も", "失敗から学びを得る"];
+  const hrMessagesHighlight = ["採用活動＝仲間集め"];
+
+  const topMessagesFirst = [
+    "私たちReloadedgeは「地域の皆様の明日（ミライ）を元気にする」という経営ビジョンを掲げるベンチャー企業です。",
+    "社員一人ひとりの「個性」と「能力」を活かし、時代を先読みしたビジネスアイデアを仲間と共にカタチにしながら、日々社会へ貢献しています。",
+    "そんなReloadedgeの特徴的な社風は、「どんな若手でも期待し、責任ある仕事に抜擢する」ことです。",
+    "私自身、人の才能に大きな差はないと考えています。",
+    "だからこそ、成長する人とそうでない人の違いはたった1つ。",
+    "1つ1つの経験を糧にし、次に活かしていけるかどうかだと思います。"
+  ];
+
+  const topMessagesSecond = [
+    "皆さんには失敗を恐れず、1つ1つの経験を糧にどんどん責任ある仕事に挑戦をしてほしいです。",
+    "実際に、新卒入社１年目でも商品開発や教育担当に抜擢することもあります。",
+    "Reloadedgeはチャレンジする人にはチャンスがある環境です。",
+    "この挑戦環境で「エッジの効いた人生を歩みたい」と思っていただける方と、同じ夢を追いかける仲間として共に新たな未来を創造していきませんか？",
+    "皆さんと一緒にエッジの効いた人生を歩めることを楽しみにしています！"
+  ];
+
+  const hrMessagesFirst = [
+    "元々は中途社員中心の組織体制だった当社。",
+    "しかし、中途社員は良くも悪くも、前職の経験を通して仕事の価値観が形成され、会社のカルチャーや方針が浸透しないことも…。",
+    "変化スピードが速いビジネス環境で会社が生き残り、さらに発展をしていくためには会社の理念に共感していながらも、“新たな発想“を持ち、”柔軟に変化できる”新卒人材の方が可能性を感じ新卒採用を開始しました。リロードエッジは今まで中途採用をメインに行ってきましたが\nこれからは新卒を中心とした組織づくりへ転換していきます。"
+  ]; 
+  const hrMessagesSecond = [
+    "私たちは「一緒に働く仲間」を大切にしています。",
+    "採用活動＝仲間集めと考えているため一緒に旅を楽しめる仲間と出会うことが就職活動と採用活動だと思っています。船の船員はやることは違えど目指す目的地は同じなのでこの船で、この仲間と未来を創りたい！と思える会社と出会えるようにしましょう。",
+    "そんな私たちと一緒に会社を作り上げたい仲間を募集いたします。"
+  ];
+  const hrMessagesThird = ["私たちはこのような想いを強く持ちながら新卒採用活動に臨んでいます。皆さんと選考でお会いできることを楽しみにしております。"];
+%>
+
+<%- include('common/_head', {metaTitle: 'messageページ' }) %>
+
+<body>
+  <%- include('common/_header') %>
+  <div class="page">
+    <!-- message -->
+    <div class="contents contents--message">
+      <div class="contents__inner contents__inner--message">
+        <div class="contents__message-title">
+          <%- include(`${ROOT_EJS}/module/title/_contents`, { contentInfo }) %>
+        </div>
+        <div class="contents__hr-message-kv">
+          <p class="contents__hr-message-kv-title contents__top-message-kv-title--pc">
+            <img src="../assets/images/message/message-text_pc.svg" alt="エッジの効いた人生を、リロードエッジで歩もう">
+          </p>
+          <p class="contents__top-message-kv-title contents__top-message-kv-title--sp">
+            <img src="../assets/images/message/message-text_sp.svg" alt="エッジの効いた人生を、リロードエッジで歩もう">
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- topMessage -->
+    <div class="contents contents--top-message contents--black">
+      <div class="contents__inner contents__inner--top-message">
+        <div class="contents__top-message-title">
+          <%- include(`${ROOT_EJS}/module/title/_contents`, { contentInfo: messageTopInfo }) %>
+        </div>
+        <div class="contents__top-message-items">
+          <div class="contents__top-message-item contents__top-message-items--left">
+            <div class="contents__top-message-item-img contents__top-message-item-img--pc">
+              <img src="../assets/images/message/mesaeg_top_img_pc.jpg" alt="代表取締役 高取 健治">
+            </div>
+            <div class="contents__top-message-item-img contents__top-message-item-img--SP">
+              <img src="../assets/images/message/mesaeg_top_img_sp.jpg" alt="代表取締役 高取 健治">
+            </div>
+            <div class="contents__top-message-item-caption">
+              <% topName.forEach((name, i) => { %>
+                <p class="contents__top-message-item-caption-text contents__top-message-item-caption-text--<%= i %>"><%= name %></p>
+              <% }) %>
+            </div>
+          </div>
+          <div class="contents__top-message-item contents__top-message-items--right">
+            <p class="contents__top-message-item-title contents__top-message-item-title--pc">
+              <img src="../assets/images/message/top_message_text_pc.svg" alt="チャレンジする人にはチャンスがある、それがReloadEdgeです。">
+            </p>
+            <p class="contents__top-message-item-title contents__top-message-item-title--sp">
+              <img src="../assets/images/message/top_message_text_sp.svg" alt="チャレンジする人にはチャンスがある、それがReloadEdgeです。">
+            </p>
+            <div class="contents__top-message-item-text-wrap contents__top-message-item-text-wrap--first">
+              <% topMessagesFirst.forEach(first => { %>
+                <p class="contents__top-message-item-text"><%= first %></p>
+              <% }) %>
+            </div>
+            <div class="contents__highlight-wrap contents__top-message-item-text-wrap">
+              <% topMessagesHighlight.forEach((highlight, i) => { %>
+              <p class="contents__highlight contents__top-message-item-highlight contents__top-message-item-highlight--<%= i %>"><%= highlight %></p>
+              <% }) %>
+            </div>
+            <div class="contents__top-message-item-text-wrap contents__top-message-item-text-wrap--second">
+              <% topMessagesSecond.forEach(second => { %>
+                <p class="contents__top-message-item-text"><%= second %></p>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- hrMessage -->
+    <div class="contents contents--hr-message">
+      <div class="contents__inner contents__inner--hr-message">
+        <div class="contents--hr-message-title">
+          <%- include(`${ROOT_EJS}/module/title/_contents`, { contentInfo: messageHrInfo }) %>
+        </div>
+        <div class="contents__hr-message-items">
+          <div class="contents__hr-message-item contents__hr-message-items--left">
+            <p class="contents__hr-message-item-title contents__hr-message-item-title--pc">
+              <img src="../assets/images/message/hr_message_text_pc.svg" alt="さらなる組織成長を目指し新卒採用活動を指導。">
+            </p>
+            <p class="contents__hr-message-item-title contents__hr-message-item-title--sp">
+              <img src="../assets/images/message/hr_message_text_sp.svg" alt="さらなる組織成長を目指し新卒採用活動を指導。">
+            </p>
+            <div class="contents__hr-message-item-text-wrap contents__hr-message-item-text-wrap--first">
+            </div>
+              <div class="contents__highlight-wrap contents__hr-message-item-text-wrap">
+                <% hrMessagesHighlight.forEach((highlight, i) => { %>
+                <p class="contents__highlight contents__hr-message-item-highlight contents__hr-message-item-highlight--<%= i %>"><%= highlight %></p>
+                <% }) %>
+            </div>
+            <div class="contents__hr-message-item-text-wrap contents__hr-message-item-text-wrap--second">
+              <% hrMessagesSecond.forEach(second => { %>
+                <p class="contents__hr-message-item-text"><%= second %></p>
+              <% }) %>
+            </div>
+            <div class="contents__hr-message-item-text-wrap contents__hr-message-item-text-wrap--third">
+              <% hrMessagesThird.forEach(third => { %>
+                <p class="contents__hr-message-item-text"><%= third %></p>
+              <% }) %>
+            </div>
+          </div>
+          <div class="contents__hr-message-item contents__hr-message-items--right">
+            <div class="contents__hr-message-item-img contents__hr-message-item-img--pc">
+              <img src="../assets/images/message/mesaeg_hr_img_pc.jpg" alt="人事/新卒採用担当 山田 花子">
+            </div>
+            <div class="contents__hr-message-item-img contents__hr-message-item-img--SP">
+              <img src="../assets/images/message/mesaeg_hr_img_sp.jpg" alt="人事/新卒採用担当 山田 花子">
+            </div>
+            <div class="contents__hr-message-item-caption">
+              <% hrName.forEach((name, i) => { %>
+                <p class="contents__hr-message-item-caption-text contents__hr-message-item-caption-text--<%= i %>"><%= name %></p>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include('common/_footer') %>
+</body>

@@ -1,0 +1,12 @@
+node_modules
+# ビルドによって生成されるファイル
+dist/
+
+# 依存関係管理ツールによって生成されるファイル
+node_modules/
+
+# 環境変数ファイル
+.env
+
+# TODO 後で削除
+src/page/

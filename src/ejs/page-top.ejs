@@ -1,0 +1,349 @@
+<% 
+  const ROOT_EJS=`${process.cwd()}/src/ejs`;
+
+  const moreButtonInfoWhite = {
+    text: "READ MORE",
+    color: "white",
+    link: "TODO",
+  };
+
+  const moreButtonInfoBlack = {
+    text: "READ MORE",
+    color: "black",
+    link: "TODO",
+  };
+
+  const viewButtonInfoBlack = {
+    text: "VIEW MORE",
+    color: "black",
+    link: "TODO",
+  };
+
+  const contentInfoJob = {
+    subTitle: "職種紹介",
+    mainTitle: "../assets/images/top/title_job.svg",
+    pos: "left",
+  };
+
+  const contentInfoMember = {
+    subTitle: "社員を知る",
+    mainTitle: "../assets/images/top/title_member.svg",
+    pos: "center",
+  };
+
+  const contentInfoCulture = {
+    subTitle: "働き方を知る",
+    mainTitle: "../assets/images/top/title_culture.svg",
+    pos: "right-middle",
+  };
+
+  const contentInfoNews = {
+    subTitle: "最新情報",
+    mainTitle: "../assets/images/top/title_news.svg",
+    pos: "center",
+  };
+
+  const contentSecondTitleCulture = "全員が主人公仕事も遊びも全力で楽しむ";
+
+  const memberItems = [
+    {
+      pcImg: "../assets/images/top/member_1_pc.jpg",
+      spImg: "../assets/images/top/member_1_sp.jpg",
+      alt: "松田千裕",
+      caption: {
+        name: "松田千裕",
+        position: "営業職 マネージャー",
+      },
+      text: "仕事は\n楽しむためにある",
+    },
+    {
+      pcImg: "../assets/images/top/member_2_pc.jpg",
+      spImg: "../assets/images/top/member_2_sp.jpg",
+      alt: "松田千裕",
+      caption: {
+        name: "松田千裕",
+        position: "営業職 マネージャー",
+      },
+      text: "入社わずか1年で\n店長代理に抜擢",
+    },
+    {
+      pcImg: "../assets/images/top/member_3_pc.jpg",
+      spImg: "../assets/images/top/member_3_sp.jpg",
+      alt: "松田千裕",
+      caption: {
+        name: "松田千裕",
+        position: "営業職 マネージャー",
+      },
+      text: "年齢も立場も関係なく自分を活かせる",
+    },
+    {
+      pcImg: "../assets/images/top/member_4_pc.jpg",
+      spImg: "../assets/images/top/member_4_sp.jpg",
+      alt: "松田千裕",
+      caption: {
+        name: "松田千裕",
+        position: "営業職 マネージャー",
+      },
+      text: "仕事は\n楽しむためにある",
+    },
+    {
+      pcImg: "../assets/images/top/member_5_pc.jpg",
+      spImg: "../assets/images/top/member_5_sp.jpg",
+      alt: "松田千裕",
+      caption: {
+        name: "松田千裕",
+        position: "営業職 マネージャー",
+      },
+      text: "仕事は\n楽しむためにある",
+    },
+  ];
+  // ニュース記事newかどうかの判定 
+  const checkIsNew = (unixDate) => {
+    // 1日以内の差分ならisNewをつける
+    const now = new Date();
+    const createDateTime = unixDate.getTime();
+    const dayMs = 1000 * 60 * 60 * 24;
+    const isNew = now.getTime() - createDateTime <= dayMs;
+    return isNew;
+  };
+
+  // ニュース記事表示させる日付の処理
+  const createDate = (unixDate) => {
+    const year = unixDate.getFullYear(); 
+    const month = unixDate.getMonth() + 1;
+    const day = unixDate.getDate();
+    const transAddZeroMonth = month < 10 ? `0${month}` : month;
+    const transAddZeroDay = day < 10 ? `0${day}` : day;
+    return `${year}.${transAddZeroMonth}.${transAddZeroDay}`
+  }
+  const newsItems = [
+    {
+      pcImg: "../assets/images/top/top_news_img_1_pc.jpg",
+      spImg: "../assets/images/top/top_news_img_1_sp.jpg",
+      alt: "news",
+      isNew: checkIsNew(new Date("2023-02-27 23:00:00")),
+      date: createDate(new Date()),
+      text: "8月の説明会のお知らせ",
+    },
+    {
+      pcImg: "../assets/images/top/top_news_img_1_pc.jpg",
+      spImg: "../assets/images/top/top_news_img_1_sp.jpg",
+      alt: "news",
+      isNew: checkIsNew(new Date("2023-02-27 23:00:00")),
+      date: createDate(new Date()),
+      text: "8月の説明会のお知らせ",
+    },
+    {
+      pcImg: "../assets/images/top/top_news_img_1_pc.jpg",
+      spImg: "../assets/images/top/top_news_img_1_sp.jpg",
+      alt: "news",
+      isNew: checkIsNew(new Date("2023-02-27 23:00:00")),
+      date: createDate(new Date()),
+      text: "超実践インターン型選考『LOAD』の開催レポートなどタイトルが入ります",
+    },
+    {
+      pcImg: "../assets/images/top/top_news_img_1_pc.jpg",
+      spImg: "../assets/images/top/top_news_img_1_sp.jpg",
+      alt: "news",
+      isNew: false,
+      date: createDate(new Date()),
+      text: "あなたの将来を見据える上で伝えておきたいメッセージがあります。",
+    },
+    {
+      pcImg: "../assets/images/top/top_news_img_1_pc.jpg",
+      spImg: "../assets/images/top/top_news_img_1_sp.jpg",
+      alt: "news",
+      isNew: checkIsNew(new Date("2023-02-26 23:00:00")),
+      date: createDate(new Date()),
+      text: "社外セミナーや他社視察への参加など、幅広い学びの機会を設けています。",
+    },
+    {
+      pcImg: "../assets/images/top/top_news_img_1_pc.jpg",
+      spImg: "../assets/images/top/top_news_img_1_sp.jpg",
+      alt: "news",
+      isNew: checkIsNew(new Date("2023-02-26 23:00:00")),
+      date: createDate(new Date()),
+      text: "8月の説明会のお知らせ",
+    },
+    {
+      pcImg: "../assets/images/top/top_news_img_1_pc.jpg",
+      spImg: "../assets/images/top/top_news_img_1_sp.jpg",
+      alt: "news",
+      isNew: checkIsNew(new Date("2023-02-26 23:00:00")),
+      date: createDate(new Date()),
+      text: "8月の説明会のお知らせ",
+    },
+    {
+      pcImg: "../assets/images/top/top_news_img_1_pc.jpg",
+      spImg: "../assets/images/top/top_news_img_1_sp.jpg",
+      alt: "news",
+      isNew: checkIsNew(new Date("2023-02-26 23:00:00")),
+      date: createDate(new Date()),
+      text: "8月の説明会のお知らせ",
+    },
+  ];
+%>
+
+<%- include('common/_head', { metaTitle: 'topページ' }) %>
+
+<body>
+  <%- include('common/_header') %>
+  <div class="page">
+    <!-- TODO KV -->
+    <!-- Job -->
+    <div class="contents contents--job contents--black">
+      <div class="contents__inner contents__inner--job">     
+        <div class="contents__job-section">
+          <div class="contents__job-section-left">
+            <div class="contents__head-title-wrap">
+              <%- include(`${ROOT_EJS}/module/title/_contents`, { contentInfo: contentInfoJob }) %>
+            </div>   
+            <p class="contents__second-title contents__second-title--job">明日(ミライ)を元気にする<br class="isPc">さまざまな事業で地域に貢献</p>
+            <p class="contents__job-text">
+              当社は「地域のみなさまの明日を元気にする」<br class="isPc">を理念として、様々な分野で消費者の生活の<br class="isPc">充実、社会貢献を目指しています。。</p>
+            <%- include(`${ROOT_EJS}/module/button/_more`, { moreButtonInfo: moreButtonInfoWhite }) %>
+          </div>
+          <div class="contents__job-section-right contents__job-section-right--pc">
+            <div class="contents__job-img contents__job-img--pc"><img src="../assets/images/top/top_job_bg_pc.png" alt=""></div>
+          </div>
+          <div class="contents__job-section-right contents__job-section-right--sp">
+            <div class="contents__head-title-wrap"><%- include(`${ROOT_EJS}/module/title/_contents`, { contentInfo: contentInfoJob }) %></div>
+            <div class="contents__job-img contents__job-img--sp"><img src="../assets/images/top/top_job_bg_sp.png" alt=""></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Member -->
+    <div class="contents contents--member contents--blue-light">
+      <div class="contents__inner contents__inner">
+        <%- include(`${ROOT_EJS}/module/title/_contents`, { contentInfo: contentInfoMember }) %>
+          <p class="contents__member-text">新たな常識を創り出してきた仲間たち</p>
+          <div class="contents__member-section">
+            <ul class="contents__member-items contents__member-items--pc">
+              <% memberItems.forEach(member=> { %>
+                <li class="contents__member-item">
+                  <div class="contents__member-itemImg">
+                    <img src="<%= member.pcImg %>" alt="<%= member.alt %>">
+                    <p class="contents__member-item-caption-wrap">
+                      <span class="contents__member-item-caption contents__member-item-caption--large">
+                        <%= member.caption.name %>
+                      </span>
+                      <span class="contents__member-item-caption contents__member-item-caption--small">
+                        <%= member.caption.position %>
+                      </span>
+                    </p>
+                  </div>
+                  <p class="contents__member-item-text"><%= member.text %></p>
+                </li>
+              <% }) %>
+            </ul>
+            <ul class="contents__member-items contents__member-items--sp">
+              <% memberItems.forEach(member=> { %>
+                <li class="member__item">
+                  <div class="member__itemImg">
+                    <img src="<%= member.spImg %>" alt="<%= member.alt %>">
+                    <p class="member__item-captionWrap imageCaption">
+                      <span class="member__item-caption member__item-caption--large">
+                        <%= member.caption.name %>
+                      </span>
+                      <span class="member__item-caption member__item-caption--small">
+                        <%= member.caption.position %>
+                      </span>
+                    </p>
+                  </div>
+                  <p class="member__item-text">
+                    <%= member.text %>
+                  </p>
+                </li>
+                <% }) %>
+            </ul>
+            <div class="contents__member-bar-wrap">
+              <div class="contents__member-bar"></div>
+              <div class="contents__member-button-wrap">
+                <div class="contents__member-button contents__member-button--prev"></div>
+                <div class="contents__member-button contents__member-button--next"></div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!-- Culture -->
+    <div class="contents contents--culture contents--blue-light">
+      <div class="contents__inner contents__inner--culture">
+        <div class="contents__culture--left"></div>
+        <div class="contents__culture--right">
+          <div class="contents__culture-title"><%- include(`${ROOT_EJS}/module/title/_contents`, { contentInfo: contentInfoCulture }) %></div>
+          <div class="contents__culture-section">
+            <div class="contents__culture-section-wrap">
+                <p class="contents__second-title contents__second-title--culture">全員が主人公<br />仕事も遊びも全力で楽しむ</p>
+                <p class="contents__culture-text">まずは自分たちがはたらくを楽しみ<br class="isPc">
+                  そしてしあわせになることから。<br class="isPc">
+                  希望の星になる仕掛けを紹介します。
+                </p>
+              <%- include(`${ROOT_EJS}/module/button/_more`, { moreButtonInfo: moreButtonInfoBlack }) %>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <!-- News -->
+    <div class="contents contents--news">
+      <div class="contents__inner contents__inner--news">
+        <%- include(`${ROOT_EJS}/module/title/_contents`, { contentInfo: contentInfoNews }) %>
+          <!-- pc用にュース -->
+          <ul class="contents__news-items contents__news-items--pc">
+            <% let counter = 0; %>
+            <% while (counter <= 7) { %>
+              <!-- ニュース記事1つ1つ -->
+              <li class="contents__news-item">
+                <!-- ニュース記事写真部分 --> 
+                <div class="contents__news-item-left">
+                  <img src="<%= newsItems[counter].pcImg %>" alt="<%= newsItems[counter].alt %>">
+                </div>
+                <!-- ニュース記事テキスト部分 --> 
+                <div class="contents__news-item-right">
+                  <p class="contents__news-head">
+                    <% if(newsItems[counter].isNew) { %>
+                      <span class="contents__news-new">NEW</span>
+                    <% } %>
+                    <span class="contents__news-date"><%= newsItems[counter].date %></span>
+                  </p>
+                  <p class="contents__news-body"><%= newsItems[counter].text %></p>
+                </div>
+              </li>
+              <% counter++; %>
+            <% } %>
+          </ul>
+          <!-- sp用にュース -->
+          <ul class="contents__news-items contents__news-items--sp">
+            <% let counterSp = 0; %>
+            <% while (counterSp <= 2) { %>
+              <!-- ニュース記事1つ1つ -->
+              <li class="contents__news-item">
+                <!-- ニュース記事写真部分 --> 
+                <div class="contents__news-item-left">
+                  <img src="<%= newsItems[counterSp].spImg %>" alt="<%= newsItems[counterSp].alt %>">
+                </div>
+                <!-- ニュース記事テキスト部分 --> 
+                <div class="contents__news-item-right">
+                  <p class="contents__news-head">
+                    <% if(newsItems[counterSp].isNew) { %>
+                      <span class="contents__news-new">NEW</span>
+                    <% } %>
+                    <span class="contents__news-date"><%= newsItems[counterSp].date %></span>
+                  </p>
+                  <p class="contents__news-body"><%= newsItems[counterSp].text %></p>
+                </div>
+              </li>
+              <% counterSp++; %>
+            <% } %>
+          </ul>
+          <div class="contents__news-more">
+            <%- include(`${ROOT_EJS}/module/button/_more`, { moreButtonInfo: viewButtonInfoBlack }) %>
+          </div>
+      </div>
+    </div>
+  </div>
+  <!-- TODO footer -->
+  <%- include('common/_footer') %>
+</body>

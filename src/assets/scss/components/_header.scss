@@ -1,0 +1,282 @@
+@use 'module/colors';
+@use 'module/common';
+@use 'module/reset';
+@use 'module/mixin' as *;
+@use 'module/functions' as *;
+@use 'sass:math';
+
+.header {
+  $nav-pc-height: 50px;
+  $nav-sp-height: sp(105px);
+  position: relative;
+  height: $nav-pc-height;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: colors.$blue-dark-deep;
+  z-index: 1;
+  overflow: hidden;
+  @include mq(sp) {
+    height: $nav-sp-height;
+  }
+
+  &__logo-wrapper {
+    padding: 0 51px;
+    flex-shrink: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+  }
+
+  &__logo {
+    &--pc {
+      width: 207px;
+      height: 21px;
+      @include mq(sp) {
+        display: none;
+      }
+    }
+    &--sp {
+      width: sp(200px);
+      transition: opacity 0.5s ease-in-out;
+      &[data-hidden="true"] {
+        opacity: 0;
+      }
+      @include mq(pc) {
+        display: none;
+      }
+    }
+  }
+
+  &__navigation-pc {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    flex-shrink: 1;
+    @include mq(sp) {
+      display: none;
+    }
+  }
+
+  .navigation-pc {
+    &__nav-list {
+      flex-shrink: 1;
+      display: flex;
+      margin-right: 40px;
+      min-width: 0;
+      overflow-x: auto;
+      height: 2 * $nav-pc-height;
+      align-self: flex-start;
+    }
+    &__nav {
+      display: block;
+      color: white;
+      font-size: 1.6rem;
+      cursor: pointer;
+      height: $nav-pc-height;
+      line-height: $nav-pc-height;
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+    &__entry-button {
+      flex-shrink: 1;
+      height: 100%;
+      width: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.6rem;
+      color: colors.$white;
+      background-color: colors.$blue;
+    }
+  }
+
+  &__navigation-sp {
+    @include mq(pc) {
+      display: none;
+    }
+  }
+
+  @include mq(pc) {
+    .hamburger {
+      display: none;
+    }
+    .navigation-sp {
+      display: none;
+    }
+  }
+
+  @include mq(sp) {
+    .hamburger {
+      cursor: pointer;
+      background-color: colors.$blue;
+      width: sp(105px);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0 0 0 10px;
+
+      &__line {
+        $transition-property: 0.5s ease-in-out;
+        width: sp(50px);
+        height: sp(2px);
+        background-color: colors.$white;
+        transition: transform $transition-property, opacity $transition-property, transform-origin $transition-property, height $transition-property, margin $transition-property;
+        &:nth-child(2) {
+          margin: sp(16px) 0;
+        }
+      }
+
+      &[data-active="true"] .hamburger__line:nth-child(1) {
+        transform: translateY(#{sp(1px)}) rotate(-45deg);
+        transform-origin: center;
+      }
+      &[data-active="true"] .hamburger__line:nth-child(2) {
+        opacity: 0;
+        margin: 0;
+        height: 0;
+      }
+      &[data-active="true"] .hamburger__line:nth-child(3) {
+        transform: translateY(#{sp(-1px)}) rotate(45deg);
+        transform-origin: center;
+      }
+    }
+
+    .navigation-sp {
+      position: fixed;
+      top: $nav-sp-height;
+      left: 0;
+      width: 100%;
+      transition: opacity 0.5s linear;
+      opacity: 0;
+      pointer-events: none;
+      background-color: colors.$blue-dark-deep;
+      height: calc(100vh - #{$nav-sp-height});
+      overflow: auto;
+      &[data-active="true"] {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      &__navs {
+        padding: sp(84px) 0 sp(120px);
+      }
+
+      &__nav {
+        display: block;
+        &:not(:last-child) {
+          margin-bottom: sp(114px);
+        }
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        color: colors.$white;
+        &__en {
+          width: sp(465px);
+          margin-right: sp(40px);
+          font-size: sp(4.6rem);
+          text-align: right;
+        }
+        &__ja {
+          width: sp(245px);
+          font-size: sp(2.4rem);
+          text-align: left;
+        }
+      }
+
+      &__entry-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: sp(630px);
+        height: sp(160px);
+        margin: 0 auto sp(120px);
+        font-size: sp(5.7rem);
+        background-color: colors.$blue;
+        color: white;
+      }
+
+      &__sns {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: sp(110px);
+        
+
+        .sns {
+          &__link {
+            &:not(:last-child) {
+              margin-right: sp(40px);
+            }
+          }
+
+          &__icon--tiktok {
+            width: sp(46px);
+            height: sp(52.75px);
+          }
+
+          &__icon--instagram {
+            width: sp(54px);
+            height: sp(54px);
+          }
+        }
+      }
+
+      &__address {
+        letter-spacing: 2;
+        display: flex;
+        justify-content: center;
+        font-size: sp(2.2rem);
+        margin-bottom: sp(70px);
+        line-height: 1.75;
+        color: colors.$white;
+
+        .address {
+          &__label {
+            margin-right: sp(14px);
+          }
+        }
+      }
+
+      &__links {
+        display: flex;
+        justify-content: center;
+        margin-bottom: sp(72px);
+        color: colors.$white;
+      }
+
+      &__link {
+        border-bottom: 2px solid colors.$white;
+        font-size: sp(2.2rem); 
+        &:not(:last-child) {
+          margin-right: sp(50px);
+        }
+
+        .link {
+          &__icon {
+            width: sp(19px);
+            height: sp(12px);
+          } 
+        }
+      }
+
+      &__copyright {
+        display: flex;
+        justify-content: center;
+        margin-bottom: sp(72px);
+        color: colors.$white;
+      }
+
+
+    }
+  }
+}

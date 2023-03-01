@@ -1,0 +1,8 @@
+<div class="caption">
+  <div class="caption__title-wrap">
+    <% captionInfo.title,forEach(title => {
+      <p class="caption__title caption__title--<% captionInfo.size %>"><%= title %></p>
+    })%>
+  </div>
+  <p class="caption__text"><% captionInfo.text %></p>
+</div>

@@ -1,0 +1,37 @@
+<% 
+  const ROOT_EJS=`${process.cwd()}/src/ejs`;
+  const column = ["業界＆会社理解クイズ", "TOP LIVE", "会社理解ワーク"];
+%>
+
+<div class="contents__company-detail-inner">
+  <div class="contents__company-detail-title-wrap">
+    <p class="contents__company-detail-title">会社説明会-RE-</p>
+    <p class="contents__company-detail-subTitle">エッジの効いた一歩目を歩む<br class="is-sp">オンラインプログラム</p>
+  </div>
+  <div class="contents__company-detail-text">
+    「エッジの効いた人生を歩もう」を採用メッセージに掲げ、<br class="is-pc">
+    エッジの効いた数々の挑戦をする業界の“風雲児”リロードエッジ。<br class="is-pc">
+    そんなリロードエッジがお届けする、<br class="is-pc">
+    未来の可能性を味わう濃密なプログラム「会社説明会-RE-」。<br />
+    就活は様々な選択肢に出逢い、将来の可能性を拡げる大切な期間。<br class="is-pc">
+    だからこそ、今の自分にできることだけでなく、<br class="is-pc">
+    未来の自分ができること、チャレンジしてみたいことを考えてみませんか？<br />
+    リロードエッジの「会社説明会-RE-」では、<br class="is-pc">
+    急成長企業で“働く”ことを体感できるプログラムをご用意しています！<br />
+    さぁ、まずはエッジの効いた人生を歩む一歩目を踏み出してみましょう！
+  </div>
+  <div class="column">
+    <% column.forEach((col, i)=> { %>
+      <div class="column__col">
+        <span class="column__num">
+          <%= i+1 %>
+        </span>
+        <span class="column__txt">
+          <%= col %>
+        </span>
+      </div>
+      <% }) %>
+  </div>
+  <%- include(`${ROOT_EJS}/module/_boxContent`) %>
+  <%- include(`${ROOT_EJS}/component/recruit/_voice`) %>
+</div>

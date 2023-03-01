@@ -1,0 +1,13 @@
+@charset 'utf-8';
+
+// breakpoint
+$breakpoint: (
+  sp: "screen and (max-width: 750px)",
+  pc: "screen and (min-width: 751px)",
+);
+
+@mixin mq($bp) {
+  @media #{map-get($breakpoint, $bp)} {
+    @content;
+  }
+}

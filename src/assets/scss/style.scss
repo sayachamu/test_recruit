@@ -1,0 +1,20 @@
+@charset 'utf-8';
+@use 'module/colors';
+@use 'module/common';
+@use 'module/reset';
+@use 'module/mixin';
+@use 'module/functions';
+@use 'module/layout';
+@use 'components/header';
+@use 'components/footer';
+@use 'components/top';
+@use 'components/message';
+@use 'components/recruit';
+@use 'components/company';
+
+html {
+  font-size: 62.5%;
+}
+body {
+  min-width: 1400px;
+}

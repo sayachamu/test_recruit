@@ -1,0 +1,126 @@
+<% 
+    const ROOT_EJS=`${process.cwd()}/src/ejs`
+    const lineTitle = [
+      {
+        main: "1",
+        sub: "業界＆会社理解クイズ"
+      },
+      {
+        main: "2",
+        sub: "TOP LIVE"
+      },
+      {
+        main: "3",
+        sub: "会社理解ワーク"
+      }
+    ];
+    const boxContentInfos = [
+    {
+      subTitle: "業界＆会社理解クイズ",
+      description: "皆さんの入社後のキャリアや成長を続ける秘密を特別に大公開いたします！\nエッジの効いた人生を歩むヒントを掴んでみて下さい。",
+      boxContents: [
+        {
+          pcSrc: "../assets/images/recruit/img_1_1_pc.jpg",
+          spSrc: "../assets/images/recruit/img_1_1_sp.jpg",
+          alt: "業界＆会社理解クイズ",
+          caption: "飲食と医療クリニックを主軸事業に\n据えるリロードエッジ。\n業界の裏側やリアルもお伝えします！",
+        },
+        {
+          pcSrc: "../assets/images/recruit/img_1_2_pc.jpg",
+          spSrc: "../assets/images/recruit/img_1_2_sp.jpg",
+          alt: "業界＆会社理解クイズ",
+          caption: "Yahoo！ニュースなど大手メディアでも\n取り上げられたリロードエッジの\n採用についてもご紹介！",
+        },
+        {
+          pcSrc: "../assets/images/recruit/img_1_3_pc.jpg",
+          spSrc: "../assets/images/recruit/img_1_3_sp.jpg",
+          alt: "業界＆会社理解クイズ",
+          caption: "会社の事業、入社後のキャリアプランを\nクイズ形式で楽しみながら\n知ることができる濃密な時間！",
+        }
+      ]
+    },
+    {
+      subTitle: "TOP LIVE",
+      description: "代表直々に会社のミッションや経営の裏側、さらには失敗の数々を包み隠さず紹介。\n“変わった”社内イベントなど、リロードエッジを丸わかりできる時間です！",
+      boxContents: [
+        {
+          pcSrc: "../assets/images/recruit/img_2_1_pc.jpg",
+          spSrc: "../assets/images/recruit/img_2_1_sp.jpg",
+          alt: "TOP LIVE",
+          caption: "「ここまで紹介するのか！」\nという裏側まで、\n包み隠さず大公開いたします！"
+        },
+        {
+          pcSrc: "../assets/images/recruit/img_2_2_pc.jpg",
+          spSrc: "../assets/images/recruit/img_2_2_sp.jpg",
+          alt: "TOP LIVE",
+          caption: "採用担当への質問のお時間も用意。\n気になることなどはすべて\n質問することができます！"
+        },
+        {
+          pcSrc: "../assets/images/recruit/img_2_3_pc.jpg",
+          spSrc: "../assets/images/recruit/img_2_3_sp.jpg",
+          alt: "TOP LIVE",
+          caption: "新卒に期待するリロードエッジの\n実際の取り組みや、新卒入社の先輩の\n事例にも触れられます！"
+        }
+      ]
+    },
+    {
+      subTitle: "会社理解ワーク",
+      description: "グループワークを通して、リロードエッジの理解を深めます。\n自分の実力を確かめる機会にも挑戦！内容は当日参加してのお楽しみです。",
+      boxContents: [
+        {
+          pcSrc: "../assets/images/recruit/img_3_1_pc.jpg",
+          spSrc: "../assets/images/recruit/img_3_1_sp.jpg",
+          alt: "会社理解ワーク",
+          caption: "リロードエッジならではの\n“エッジの効いた“\nグループワークコンテンツ！",
+        },
+        {
+          pcSrc: "../assets/images/recruit/img_3_2_pc.jpg",
+          spSrc: "../assets/images/recruit/img_3_2_sp.jpg",
+          alt: "会社理解ワーク",
+          caption: "プレゼンテーション能力や\n論理的思考力など\n社会人になっても活きる力を磨ける！",
+        },
+        {
+          pcSrc: "../assets/images/recruit/img_3_3_pc.jpg",
+          spSrc: "../assets/images/recruit/img_3_3_sp.jpg",
+          alt: "会社理解ワーク",
+          caption: "グループワークはチームで取り組むため、\n終わったときには達成感！"
+        }
+      ]
+    }
+  ]
+%>
+
+<div class="box-content">
+  <% boxContentInfos.forEach((boxContentInfo, i) => { %>
+    <div class="box-content__inner">
+    <%- include(`${ROOT_EJS}/module/title/_line`, { lineTitle }) %>
+      <p class="box-content__description">
+        <%= boxContentInfo.description %>
+      </p>
+      <ul class="box-content__items--pc">
+        <% boxContentInfo.boxContents.forEach(boxContent => { %>
+          <li class="box-content__item">
+            <div class="box-content__img">
+              <img src="<%= boxContent.pcSrc %>" alt="<%= boxContent.alt %>">
+            </div>
+            <p class="box-content__caption">
+              <%= boxContent.caption %>
+            </p>
+          </li>
+        <% }) %>
+      </ul>
+      <ul class="box-content__items--sp">
+        <% boxContentInfo.boxContents.forEach(boxContent=> { %>
+          <li class="box-content__item">
+            <div class="box-content__img">
+              <img src="<%= boxContent.spSrc %>" alt="<%= boxContent.alt %>">
+            </div>
+            <p class="box-content__caption">
+              <%= boxContent.caption %>
+            </p>
+          </li>
+          <% }) %>
+      </ul>
+    </div>
+  <% }) %>
+</div>
